@@ -1,0 +1,59 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_k0VijHPR-DzuPKZpScR6W2S7HJ84YqvNrA&usqp=CAU);
+    margin: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: skyblue;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+#formulario-adopcion {
+    margin-top: 20px;
+}
+
+form {   
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input, select, textarea {
+    padding: 8px;
+    margin-bottom: 10px;
+    max-width: 100%;
+}
+
+button {
+    padding: 10px;
+    background-color: gainsboro;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: rgb(160, 155, 155);
+}
+div,input{
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+    

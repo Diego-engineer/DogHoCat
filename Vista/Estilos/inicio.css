@@ -1,0 +1,55 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_k0VijHPR-DzuPKZpScR6W2S7HJ84YqvNrA&usqp=CAU);
+    }
+    
+    .container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: skyblue;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1, h2 {
+    text-align: center;
+    }
+    
+    form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    }
+    
+    label {
+    margin-bottom: 5px;
+    }
+    
+    input {
+    padding: 8px;
+    margin-bottom: 10px;
+    }
+    
+    button {
+        display: inline-block;
+        padding: 13px 55px;
+        border: 1px solid black;
+        border-radius: 25px;
+        color: black;
+        text-decoration: none;
+        display: inline-block;
+        padding: 10px 20px;
+        color: white;
+        text-align: center;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    
+    button:hover {
+    background-color: #68a3be;
+    }
+    

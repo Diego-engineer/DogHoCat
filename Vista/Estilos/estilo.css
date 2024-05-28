@@ -1,0 +1,169 @@
+html,
+
+body{
+    position: relative;
+    height: 100%;
+}
+
+body{
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_k0VijHPR-DzuPKZpScR6W2S7HJ84YqvNrA&usqp=CAU);
+    font-family: Helvetica Neue, Helvetica;
+    font-size: 14px;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.swiper{
+    width: 100%;
+    padding: 150px 0 50px 0;
+    
+}
+
+.swiper-slide{
+    width: 300px;
+    height: 500px;
+    background-color: #323232;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    padding: 40px;
+    text-align: center;
+}
+
+.icons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.icons i{
+    font-size: 20px;
+    color: skyblue;
+}
+
+.icons img{
+    width: 75px;
+}
+
+.mascota-content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.mascota-txt{
+    flex-basis: 50%;
+    text-align: left;
+}
+
+.mascota-txt span{
+    font-size: 25px;
+    color: skyblue;
+    font-weight: bold;
+}
+
+.mascota-txt h3{
+    font-size: 20px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.mascota-txt p{
+    font-size: 14px;
+    color: #c4c4c4;
+}
+
+.mascota-img{
+    flex-basis: 50%;
+    text-align: right;
+}
+
+.mascota-img img{
+    width: 120px;
+}
+
+.btn-1{
+    display: inline-block;
+    padding: 13px 55px;
+    border: 1px solid greenyellow;
+    border-radius: 25px;
+    color: greenyellow;
+    text-decoration: none;
+    
+}
+.menu li a:hover{
+    background-color: skyblue;
+    border: 5px solid rgb(81, 134, 155);
+    color: white;
+    transition: all .2s
+}
+
+#navega{
+    width: 100%;
+    margin: 0px;
+    background-color: rgb(111, 179, 206);
+    text-align: center;   
+}
+.menu{
+    list-style-type: none;
+}
+.menu >li{
+    position: relative;
+    display: inline-block;
+}
+.menu >li a{
+    display: block;
+    padding: 15px 20px;
+    color: black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    text-decoration: none;
+}
+.adoptar-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px; /* Ajusta el margen inferior según sea necesario */
+
+}
+
+.adoptar-btn {
+    display: inline-block;
+    padding: 13px 55px;
+    border: 1px solid skyblue;
+    border-radius: 25px;
+    color: black;
+    text-decoration: none;
+    background-color: #ffffff;
+}
+form {
+    margin: 20px 0; /* Margen superior e inferior de 20px */
+}
+
+select {
+    padding: 8px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
+    border: 1px solid #ccc; /* Borde del menú desplegable */
+    border-radius: 4px; /* Bordes redondeados */
+    background-color: #f8f8f8; /* Color de fondo */
+    color: #333; /* Color del texto */
+    width: 200px; /* Ancho del menú desplegable */
+}
+
+select:focus {
+    outline: none; /* Quita el borde al enfocar */
+    border-color: #66afe9; /* Cambia el color del borde al enfocar */
+    box-shadow: 0 0 5px #66afe9; /* Agrega una sombra al enfocar */
+}
+
+option {
+    font-size: 16px; /* Tamaño de fuente */
+    padding: 8px; /* Espaciado interno */
+    background-color: #f8f8f8; /* Color de fondo */
+    color: #333; /* Color del texto */
+}
+
+option:hover {
+    background-color: #e0e0e0; /* Cambia el color de fondo al pasar el mouse */
+}
+
+
+

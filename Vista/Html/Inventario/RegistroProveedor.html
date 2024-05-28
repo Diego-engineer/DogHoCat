@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../Vista/Estilos/for.css">
+    <title>RegistroProveedores</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Registro de Provedores</h1>
+
+        <form action="../../../Controlador/ControlProveedor.php" method="POST">
+            <div>
+                <label>Nit
+                    <input type="number" id="Nit" name="Nit">
+                </label>
+            </div>
+            <div>
+                <label>Nombre
+                    <input type="text" id="Nombre" name="Nombre">
+                </label>
+            </div>
+            <div>
+                <label>Dirección
+                    <input type="text" id="Dirección" name="Direccion">
+                </label>
+            </div>
+            <div>
+                <label>Telefono Contacto
+                    <input type="number" id="Telefono" name="Telefono">
+                </label>
+            </div>
+            <div>
+                <input type="submit" value="Registrar">
+            </div>
+            <button>
+                <a href="../Inicio/Administrador.php" style="padding: 10px; background-color: gainsboro; color: black; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px; padding: 8px; margin-bottom: 10px; max-width: 100%;"> Volver </a>
+            </button>
+        </form>
+    </div>
+</body>
+</html>

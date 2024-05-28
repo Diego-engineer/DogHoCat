@@ -1,0 +1,88 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_k0VijHPR-DzuPKZpScR6W2S7HJ84YqvNrA&usqp=CAU);
+    
+    
+    
+    
+    }
+    
+    header {
+    background-color: skyblue;
+    padding: 15px;
+    text-align: center;
+    color: black;
+    list-style-type: none;
+    
+    }
+    
+    nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: wheat;
+    padding: 10px;
+    list-style-type: none;
+    
+    }
+    #navega{
+        width: 100%;
+        margin: 0px;
+        background-color: rgb(111, 179, 206);
+        text-align: center;
+        box-sizing: border-box;   
+    }
+    .menu{
+        list-style-type: none;
+    }
+    .menu >li{
+        position: relative;
+        display: inline-block;
+    }
+    .menu >li a{
+        display: block;
+        padding: 15px 20px;
+        color: black;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 20px;
+        text-decoration: none;
+    }
+    
+    .menu li a:hover{
+        background-color: skyblue;
+        border: 5px solid rgb(81, 134, 155);
+        color: white;
+        transition: all .2s;
+    }
+    #verDonaciones {
+        padding: 8px;
+        border-radius: 5px;
+        font-size: 16px;
+        background-color: skyblue;
+        color: #333;
+        cursor: pointer;
+        font-family: Arial, sans-serif;
+    }
+    
+    #verDonaciones option {
+        background-color: skyblue;
+        color: #333;
+    }
+    
+    #verDonaciones:hover {
+        color: wit;
+    }
+    
+    #verDonaciones:focus {
+        outline: none;
+        box-shadow: 0 0 5px #007bff;
+    }
+    
+    
+    
+    
+    
+    
+    

@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_formulario_adopcion.css">
+    <title>Inventario</title>
+    <link rel="stylesheet" href="../../../Vista/Estilos/for.css">
+
+        
+
+</head>
+<body>
+    <div class="container">
+        <h1>Inventario </h1>
+        
+      
+        <div id="formulario-adopcion">
+            <form action="/ProyectoPHP/Controlador/controlInventario.php" method="POST">
+                <label for="Mascota">id de la Mascota</label>
+                <input type="text" id="Mascota" name="Mascota" maxlength="20" required>
+
+                <label for="insumo">Id del insumo:</label>
+                <input type="text" id="insumo" name="insumo" maxlength="20" required>
+
+                <label for="entrada">Fecha de entrada: </label>
+                <input type="date" id="entrada" name="entrada" maxlength="20" required>
+
+                <label for="Cantidad">Cantidad de entrada: </label>
+                <input type="text" id="Cantidad" name="Cantidad" maxlength="20" required>
+
+                <label for="Salida">Cantidad de Salida: </label>
+                <input type="text " id="Salida" name="Salida" maxlength="20" required>
+
+                <label for="Disponibilidad">Disponibilidad del animal</label>
+                <input type="text" id="Disponibilidad" name="Disponibilidad" maxlength="20" required>
+
+
+                <input type="submit" value="Registrar">
+                <button type="button" onclick="volver()"> <a href=""></a> Volver</button>
+            </form>
+        </div>
+    </div>
+
+   
+</body>
+</html>
+
+</body>
+</html>

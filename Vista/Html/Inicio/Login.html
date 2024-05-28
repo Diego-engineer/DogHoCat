@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../Estilos/login.css">
+        <title>Login</title>
+
+      
+    </head>
+    
+    <body>
+        <center>
+        <section>
+            <form action="../../../Controlador/validar.php" method="POST">
+                <img src="/ProyectoPHP/Vista/Imagenes/icono.jpg" alt="" style="  width: 10%;  float: right; "> <br> <br>
+                <center><h2>Login</h2></center>
+                <label>Documento:</label>
+                <input type="text" id="Documento" name="Documento" required>
+
+                <label>Contraseña:</label>
+                <input type="password" id="Contraseña" name="Contraseña" required>
+
+                <input type="submit" value="Iniciar Sesión">
+
+                <a href="inicio.html" style="padding: 10px;
+                    background-color: gainsboro;
+                    color: black;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    margin-top: 10px;
+                    padding: 8px;
+                    margin-bottom: 10px;
+                    max-width: 100%;"> Volver </a>
+            </form>
+        </section>
+    </center>
+    </body>
+</html>
