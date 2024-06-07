@@ -1,34 +1,33 @@
 <?php
-require_once "../Modelo/ConexionBD.php";
-
-class RegistrarPedidoInsumo {
-    public function regPedidoInsumo($codigoInsumo, $cantidad, $observaciones) {
-        try {
-            $conexion = new ConexionBD();
-            $conexion->abrir();
-            
-            $sql = "INSERT INTO tbl_pedidos  VALUES ('$codigoInsumo', '$cantidad', '$observaciones')";
-            
-            $conexion->consulta($sql);
-            $res = $conexion->obtenerFilasAfectadas();
-            
-            if ($res > 0) {
-                echo 'SE HA ENVIADO TU PEDIDO CORRECTAMENTE AL PROVEEDOR.';
-            } else {
-                echo "Error al registrar pedido de insumo";
-            }
-        } catch (Exception $ex) {
-            return "Error: " . $ex->getMessage();
-        }
-    }
-}
+include '../Modelo/ConexionBD.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST["codigoInsumo"]) && isset($_POST["cantidad"]) && isset($_POST["observaciones"])) {
-        $regPedido = new RegistrarPedidoInsumo();
-        $regPedido->regPedidoInsumo($_POST["codigoInsumo"], $_POST["cantidad"], $_POST["observaciones"]);
+    $conexion = new ConexionBD();
+
+    if ($conexion->abrir() == 0) {
+        echo "Error al conectar a la base de datos";
+        exit();
+    }
+
+    $codigoInsumo = $_POST['codigoInsumo'];
+    $cantidad = $_POST['cantidad'];
+    $observaciones = $_POST['observaciones'];
+    $total = $_POST['total'];
+
+    // Configurar la zona horaria a UTC-5 (Bogotá)
+    date_default_timezone_set('America/Bogota');
+
+    // Generar la fecha actual en el formato correcto
+    $fecha = date('Y-m-d H:i:s');
+
+    $sql = "INSERT INTO tbl_pedidos (Codigo_insumo, Cantidad, Observaciones, Total, Fecha) VALUES ('$codigoInsumo', '$cantidad', '$observaciones', '$total', '$fecha')";
+    $conexion->consulta($sql);
+    $res = $conexion->obtenerFilasAfectadas();
+
+    if ($res > 0) {
+        echo '<script>alert("Usuario Creado y registrado, pulsa aceptar para ir al Login."); window.location.href = "../Vista/Html/Inicio/Login.html";</script>';
     } else {
-        echo "Llenar todos los campos";
+        echo "Error al enviar el formulario";
     }
 }
 ?>

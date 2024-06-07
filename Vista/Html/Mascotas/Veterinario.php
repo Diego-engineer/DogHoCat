@@ -27,7 +27,7 @@ if (!isset($_SESSION["Rol"])) {
         <nav id="navega">
             <ul class="menu">
                 <li><a href="../Mascotas/tablamasc.php">Ver Mascotas</a></li>
-                <li><a href="../Mascotas/control.html">Realizar Control</a></li>
+                <li><a href="../Mascotas/control.php">Realizar Control</a></li>
                
             </ul>
         </nav>

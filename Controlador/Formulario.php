@@ -98,7 +98,7 @@
         }
 
         function getantes(){
-            return $this->antea;
+            return $this->antes;
         }
 
         function getcasa(){

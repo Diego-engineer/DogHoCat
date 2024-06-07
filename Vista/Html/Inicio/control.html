@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_formulario_adopcion.css">
+    <title>Formulario de Adopción</title>
+    <link rel="stylesheet" href="../../../Vista/Estilos/for.css">
+
+        
+
+</head>
+<body>
+    <div class="container">
+        <h1>Control de veterinarios </h1>
+        
+      
+        <div id="formulario-adopcion">
+            <form action="/ProyectoPHP/Controlador/controlVeterinario.php" method="POST">
+                <label for="nombre">Documeto del Profecional:</label>
+                <input type="text" id="Profesional" name="Profesional" maxlength="20" required>
+
+                <label for="raza">Id de la mascota afectada:</label>
+                <input type="text" id="mascota" name="mascota" maxlength="20" required>
+
+                <label for="color">Estado:</label>
+                <input type="text" id="Estado" name="Estado" maxlength="20" required>
+
+                <label for="tamaño">Enfermedades:</label>
+                <input type="text" id="Enfermedades" name="Enfermedades" maxlength="20" required>
+
+                <label for="sexo">Evoluciones:</label>
+                <input type="text " id="Evoluciones" name="Evoluciones" maxlength="20" required>
+
+                <label for="tamaño">Vacunas</label>
+                <input type="text" id="Vacunas" name="Vacunas" maxlength="20" required>
+
+                <label for="tamaño"> Especialidad</label>
+                <input type="text" id="Especialidad" name="Especialidad" maxlength="20" required>
+
+
+                <input type="submit" value="Registrar">
+                <button><a href="../Mascotas/Veterinario.php" style="padding: 10px;
+                    background-color: gainsboro;
+                    color: black;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    margin-top: 10px;
+                    padding: 8px;
+                    margin-bottom: 10px;
+                    max-width: 100%;"> Volver </a> </button>
+            </form>
+        </div>
+    </div>
+
+   
+</body>
+</html>
+
+</body>
+</html>

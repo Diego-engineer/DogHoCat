@@ -18,10 +18,6 @@
         }
     }
 
-    // Obtener y mostrar los usuarios existentes
-    $conexion = new conexionBD();
-    $conexion->abrir();
-
     $sql = "SELECT * FROM tbl_usuarios";
     $conexion->consulta($sql);
     $result = $conexion->obtenerResult();

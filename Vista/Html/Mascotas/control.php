@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,16 +7,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../Estilos/for.css">
   <title>Formulario de referencia</title>
+
+  <?php
+    require_once "../../../Modelo/ConexionBD.php";
+
+    session_start();
+
+    if (!isset($_SESSION["Rol"])) {
+        header("location: ../Inicio/Login.html");
+    }
+
+    $documento = $_SESSION["documento"];
+
+    $conexion = new ConexionBD();
+    $conexion->abrir(); 
+
+    $sql = "SELECT * FROM tbl_usuarios WHERE Documento = '$documento'";
+    $conexion->consulta($sql);
+    $usuario = $conexion->obtenerResult()->fetch_assoc();
+    ?>
+
+
 </head>
 <body>
   <div class="container">
     <h1>Formulario de referencia</h1>
     <form action="../../../Controlador/ControlVeterinario.php" method="POST">
-      <label for="fecha">Fecha</label>
+      <label>Fecha</label>
       <input type="date" id="fecha" name="fecha" placeholder="Ingrese la fecha">
 
       <label>ID del veterinario referente</label>
-      <input type="number" id="veterinario" name="veterinario" placeholder="Ingrese su ID">
+      <input type="text" id="veterinario" name="veterimnario" value="<?php echo $usuario['Documento']; ?>" required>
 
       <label for="paciente">ID del paciente</label>
       <input type="number" id="paciente" name="paciente" placeholder="Ingrese el nombre del paciente">
@@ -43,31 +66,30 @@
         <option disabled selected>Seleccione El Sexo del animal</option>
         <option value="Macho">Macho</option>
         <option value="Hembra">Hembra</option>
-        <option value="Esterilizado">Esterilizado</option>
       </select>
 
-      <label for="historia">Breve historia clínica</label>
+      <label>Breve historia clínica</label>
       <textarea id="historial" name="historial" placeholder="Ingrese la breve historia clínica"></textarea>
 
-      <label for="condicion">Condición actual</label>
+      <label>Condición actual</label>
       <textarea id="condicion" name="condicion" placeholder="Ingrese la condición actual"></textarea>
 
-      <label for="tratamientos">Tratamientos médicos actuales</label>
+      <label>Tratamientos médicos actuales</label>
       <textarea id="tratamientos" name="tratamientos" placeholder="Ingrese los tratamientos médicos actuales"></textarea>
 
-      <label for="comentarios">Otros comentarios</label>
+      <label>Otros comentarios</label>
       <textarea id="comentarios" name="comentarios" placeholder="Ingrese otros comentarios"></textarea>
 
-      <label for="corporal">Condición corporal</label>
+      <label>Condición corporal</label>
       <input type="text" id="corporal" name="corporal" placeholder="Ingrese la condición corporal">
 
-      <label for="muscular">Condición muscular</label>
+      <label>Condición muscular</label>
       <input type="text" id="muscular" name="muscular" placeholder="Ingrese la condición muscular">
 
-      <label for="peso">Peso actual</label>
+      <label>Peso actual</label>
       <input type="number" id="peso" name="peso" placeholder="Ingrese el peso actual">
 
-      <label for="mantener">Peso en el que suele mantenerse</label>
+      <label>Peso en el que suele mantenerse</label>
       <input type="number" id="mantener" name="mantener" placeholder="Ingrese el peso en el que suele mantenerse">
 
       <div class="button-container">
