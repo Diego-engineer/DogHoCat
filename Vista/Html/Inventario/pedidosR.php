@@ -25,7 +25,7 @@ $result = $conexion->obtenerResult();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Editar y eliminar usuarios</title>
+    <title>Lista De Pedidos</title>
     <link rel="stylesheet" href="../../Estilos/Tablas.css">
 </head>
 <body>

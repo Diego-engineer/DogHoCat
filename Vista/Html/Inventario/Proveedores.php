@@ -30,13 +30,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Editar y eliminar usuarios</title>
+    <title>Lista De Proveedores</title>
     <link rel="stylesheet" href="../../Estilos/Tablas.css">
 </head>
 <body>
     <br><br>
-<form action="../../../Controlador/buscarUsuario.php" method="POST">
-            <input type="text" id="buscarId" name="buscarId">
+<form action="../../../Controlador/buscarProveedor.php" method="POST">
+            <input type="text" id="buscarNit" name="buscarNit">
             <input type="submit" value="Buscar">
         </form>
         <br>

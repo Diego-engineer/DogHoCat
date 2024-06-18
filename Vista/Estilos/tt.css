@@ -13,7 +13,7 @@ body {
     background-color: #f9f9f9;
 }
 
-.usuario-info {
+.usuario-info, .proveedor-info {
     margin-bottom: 20px;
     padding: 10px;
     border: 1px solid #ddd;
