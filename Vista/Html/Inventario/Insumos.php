@@ -49,7 +49,7 @@
             <?php   
             }
             ?>
-            <a href="../Inicio/Administrador.php" class="volver-button">Volver</a>
+            
         </table>
     </div>
 
@@ -146,5 +146,6 @@
             xhr.send(formData);
         }
     </script>
+     <center><a href="../Inicio/Administrador.php" style="display: inline-block; padding: 13px 55px; border: 1px solid black; border-radius: 25px; color: black; text-decoration: none;"> Atras </a></center> <br>
 </body>
 </html>

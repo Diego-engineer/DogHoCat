@@ -34,6 +34,12 @@
     <link rel="stylesheet" href="../../Estilos/Tablas.css">
 </head>
 <body>
+    <br><br>
+<form action="../../../Controlador/buscarUsuario.php" method="POST">
+            <input type="text" id="buscarId" name="buscarId">
+            <input type="submit" value="Buscar">
+        </form>
+        <br>
 
     <table border="1">
         <tr>
@@ -61,9 +67,6 @@
     <center><a href="Reportes.php" style="display: inline-block; padding: 13px 55px; border: 1px solid black; border-radius: 25px; color: black; text-decoration: none;"> Generar Reporte </a></center> <br>
     <center><a href="../Inicio/Administrador.php" style="display: inline-block; padding: 13px 55px; border: 1px solid black; border-radius: 25px; color: black; text-decoration: none;"> Atras </a></center>
 
-        <form action="../../../Controlador/buscarUsuario.php" method="POST">
-            <input type="text" id="buscarId" name="buscarId">
-            <input type="submit" value="Buscar">
-        </form>
+        
 </body>
 </html>

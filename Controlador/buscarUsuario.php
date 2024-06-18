@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultado de búsqueda</title>
-    <link rel="stylesheet" href="../../Vista/Estilos/tt.css">
+    <link rel="stylesheet" href="../Vista/Estilos/tt.css">
     <body>
       
     </body>

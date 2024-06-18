@@ -22,6 +22,6 @@ if (!empty($_POST["Documento"]) && !empty($_POST["Nombres"]) && !empty($_POST["A
         echo 'Error: ' . $ex->getMessage();
     }
 } else {
-    echo "Llenar todos los campos";
+    echo '<script>alert("Para Continuar Llena Todos lo Campos."); window.location.href = "../Vista/Html/Inicio/registrarUsuarios.html";</script>';
 }
 ?>

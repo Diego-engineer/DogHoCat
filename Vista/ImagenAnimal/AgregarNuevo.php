@@ -1,166 +1,229 @@
 <?php
+error_reporting(~E_NOTICE); // evitar avisos (notices)
 
-	error_reporting( ~E_NOTICE ); // avoid notice
-	
-	require_once 'Conexion.php';
-	
-	if(isset($_POST['btnsave']))
-	{
-    $Nombre = $_POST['Nombre'];
-    $Edad = $_POST ['Edad'];
-    $Raza = $_POST ['Raza'];
-    $Tamaño = $_POST ['Tamaño'];
-    $Color = $_POST ['Color'];
-    $Sexo = $_POST ['Sexo'];
+require_once 'Conexion.php';
+
+if(isset($_POST['btnsave']))
+{
+    // Verificar si los índices existen antes de intentar acceder a ellos
+    $Tipo = isset($_POST['Tipo']) ? $_POST['Tipo'] : "";
+    $Nombre = isset($_POST['Nombre']) ? $_POST['Nombre'] : "";
+    $Edad = isset($_POST['Edad']) ? $_POST['Edad'] : "";
+    $Raza = isset($_POST['Raza']) ? $_POST['Raza'] : "";
+    $Tamaño = isset($_POST['Tamaño']) ? $_POST['Tamaño'] : "";
+    $Color = isset($_POST['Color']) ? $_POST['Color'] : "";
+    $Sexo = isset($_POST['Sexo']) ? $_POST['Sexo'] : "";
+    $Estado = isset($_POST['Estado']) ? $_POST['Estado'] : "";
     
-     
+    $imgFile = $_FILES['user_image']['name'];
+    $tmp_dir = $_FILES['user_image']['tmp_name'];
+    $imgSize = $_FILES['user_image']['size'];
+    
+    if(empty($Nombre)){
+        $errMSG = "Ingrese el nombre.";
+    }
+    else if(empty($Edad)){
+        $errMSG = "Ingrese la edad.";
+    }
+    else if(empty($Raza)){
+        $errMSG = "Ingrese la raza.";
+    }
+    else if(empty($Tamaño)){
+        $errMSG = "Ingrese el tamaño.";
+    }
+    else if(empty($Color)){
+        $errMSG = "Ingrese el color.";
+    }
+    else if(empty($Sexo)){
+        $errMSG = "Ingrese el sexo.";
+    }
+    else if(empty($imgFile)){
+        $errMSG = "Seleccione el archivo de imagen.";
+    }
+    else
+    {
+        $upload_dir = 'imagenes/'; // directorio de subida
 
-		
-		$imgFile = $_FILES['user_image']['name'];
-		$tmp_dir = $_FILES['user_image']['tmp_name'];
-		$imgSize = $_FILES['user_image']['size'];
-		
-		
-		if(empty($Nombre)){
-			$errMSG = "Ingrese la marca";
-		}
-		else if(empty($Edad)){
-			$errMSG = "Ingrese el tipo.";
-		}else if(empty($Raza)){
-			$errMSG = "Ingrese el tipo.";
-		}else if(empty($Tamaño)){
-			$errMSG = "Ingrese el tipo.";
-		}else if(empty($Color)){
-			$errMSG = "Ingrese el tipo.";
-		}else if(empty($Sexo)){
-			$errMSG = "Ingrese el tipo.";
-		}
-		else if(empty($imgFile)){
-			$errMSG = "Seleccione el archivo de imagen.";
-		}
-		else
-		{
-			$upload_dir = 'imagenes/'; // upload directory
-	
-			$imgExt = strtolower(pathinfo($imgFile,PATHINFO_EXTENSION)); // get image extension
-		
-			// valid image extensions
-			$valid_extensions = array('jpeg', 'jpg', 'png', 'gif', 'jfif'); // valid extensions
-		
-			// rename uploading image
-			$userpic = rand(1000,1000000).".".$imgExt;
-				
-			// allow valid image file formats
-			if(in_array($imgExt, $valid_extensions)){			
-				// Check file size '1MB'
-				if($imgSize < 1000000)				{
-					move_uploaded_file($tmp_dir,$upload_dir.$userpic);
-				}
-				else{
-					$errMSG = "Su archivo es muy grande.";
-				}
-			}
-			else{
-				$errMSG = "Solo archivos JPG, JPEG, PNG & GIF son permitidos.";		
-			}
-		}
-		
-		
-		// if no error occured, continue ....
-		if(!isset($errMSG))
-		{
-			$stmt = $DB_con->prepare('INSERT INTO tbl_imagenes(Nombre,Edad,Raza,Tamaño,Color,Sexo,Imagen_Img) VALUES(:Nombre, :Edad, :Raza, :Tamaño, :Color, :Sexo, :upic)');
-			$stmt->bindParam(':Nombre',$Nombre);
-			$stmt->bindParam(':Edad',$Edad);
-      $stmt->bindParam(':Raza',$Raza);
-			$stmt->bindParam(':Tamaño',$Tamaño);
-      $stmt->bindParam(':Color',$Color);
-			$stmt->bindParam(':Sexo',$Sexo);
-			$stmt->bindParam(':upic',$userpic);
-			
-			if($stmt->execute())
-			{
-				$successMSG = "Nuevo registro insertado correctamente ...";
-				header("refresh:3;index.php"); // redirects image view page after 5 seconds.
-			}
-			else
-			{
-				$errMSG = "Error al insertar ...";
-			}
-		}
-	}
+        $imgExt = strtolower(pathinfo($imgFile, PATHINFO_EXTENSION)); // obtener extensión de la imagen
+    
+        // extensiones de imagen válidas
+        $valid_extensions = array('jpeg', 'jpg', 'png', 'gif', 'jfif'); // extensiones válidas
+    
+        // renombrar la imagen cargada
+        $userpic = rand(1000, 1000000) . "." . $imgExt;
+            
+        // permitir formatos de archivo de imagen válidos
+        if(in_array($imgExt, $valid_extensions)){            
+            // Verificar tamaño del archivo '1MB'
+            if($imgSize < 1000000) {
+                move_uploaded_file($tmp_dir, $upload_dir.$userpic);
+            }
+            else{
+                $errMSG = "Su archivo es muy grande.";
+            }
+        }
+        else{
+            $errMSG = "Solo archivos JPG, JPEG, PNG & GIF son permitidos.";        
+        }
+    }
+    
+    // si no hay errores, continuar ....
+    if(!isset($errMSG)) {
+      try {
+        $stmt = $DB_con->prepare("INSERT INTO tbl_animales VALUES ('', ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bindValue(1, $Tipo);
+        $stmt->bindValue(2, $Nombre);
+        $stmt->bindValue(3, $Edad);
+        $stmt->bindValue(4, $Raza);
+        $stmt->bindValue(5, $Tamaño);
+        $stmt->bindValue(6, $Color);
+        $stmt->bindValue(7, $Sexo);
+        $stmt->bindValue(8, $Estado);
+        $stmt->bindValue(9, $userpic);
+  
+          if($stmt->execute()) {
+              $successMSG = "Nuevo registro insertado correctamente ...";
+              header("refresh:3;index.php"); // redireccionar a la página de visualización de imágenes después de 3 segundos.
+          } else {
+              $errMSG = "Error al insertar ...";
+          }
+      } catch(PDOException $e) {
+          echo $e->getMessage();
+      }
+  }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<title>Subir, Insertar, Actualizar, Borrar una imágen usando PHP y MySQL</title>
-<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
-<!-- Latest compiled and minified JavaScript -->
-<script src="bootstrap/js/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Estilos/for.css">
+    
+    <title>Registro de Mascotas</title>
+    <script>
+        function mostrarRazas() {
+            var tipo = document.getElementById("Tipo").value;
+            var razaInput = document.getElementById("Raza");
+            var razaSelect = document.getElementById("RazaSelect");
+            
+            if (tipo === "1") {
+                razaInput.style.display = "none";
+                razaSelect.style.display = "block";
+                razaSelect.innerHTML = `
+                    <select name="Raza" id="Raza">
+                        <option value="Labrador">Labrador</option>
+                        <option value="Bulldog">Bulldog</option>
+                        <option value="Pastor Alemán">Pastor Alemán</option>
+                    </select>
+                `;
+            } 
+            else if (tipo === "2") {
+                razaInput.style.display = "none";
+                razaSelect.style.display = "block";
+                razaSelect.innerHTML = `
+                    <select name="Raza" id="Raza">
+                        <option value="Siamés">Siamés</option>
+                        <option value="Persa">Persa</option>
+                        <option value="Maine Coon">Maine Coon</option>
+                    </select>
+                `;
+            } 
+            else {
+                razaInput.style.display = "block";
+                razaSelect.style.display = "none";
+                razaSelect.innerHTML = '';
+            }
+        }
+    </script>
 </head>
 <body>
-<div class="navbar navbar-default navbar-static-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header"> <a class="navbar-brand" href="index.php" title='Inicio' target="_blank">Inicio</a> </div>
-  </div>
-</div>
-<div class="container">
-  <div class="page-header">
-    <h1 class="h3">Agregar nueva imágen. <a class="btn btn-default" href="index.php"> <span class="glyphicon glyphicon-eye-open"></span> &nbsp; Mostrar todo </a></h1>
-  </div>
-  <?php
-	if(isset($errMSG)){
-			?>
-  <div class="alert alert-danger"> <span class="glyphicon glyphicon-info-sign"></span> <strong><?php echo $errMSG; ?></strong> </div>
-  <?php
-	}
-	else if(isset($successMSG)){
-		?>
-  <div class="alert alert-success"> <strong><span class="glyphicon glyphicon-info-sign"></span> <?php echo $successMSG; ?></strong> </div>
-  <?php
-	}
-	?>
-  <form method="post" enctype="multipart/form-data" class="form-horizontal">
-    <table class="table table-bordered table-responsive">
-      <tr>
-        <td><label class="control-label">Nombre</label></td>
-        <td><input class="form-control" type="text" name="Nombre" placeholder="Ingrese la Marca"  /></td>
-      </tr>
-      <tr>
-        <td><label class="control-label">Edad</label></td>
-        <td><input class="form-control" type="text" name="Edad" placeholder="Ingrese el Modelo"  /></td>
-      </tr>
-      <td><label class="control-label">Raza</label></td>
-        <td><input class="form-control" type="text" name="Raza" placeholder="Ingrese la Marca"  /></td>
-      </tr>
-      <tr>
-        <td><label class="control-label">Tamaño</label></td>
-        <td><input class="form-control" type="text" name="Tamaño" placeholder="Ingrese el Modelo"  /></td>
-      </tr>
-      <td><label class="control-label">Color</label></td>
-        <td><input class="form-control" type="text" name="Color" placeholder="Ingrese la Marca"  /></td>
-      </tr>
-      <tr>
-        <td><label class="control-label">Sexo</label></td>
-        <td><input class="form-control" type="text" name="Sexo" placeholder="Ingrese el Modelo"  /></td>
-      </tr>
-      <tr>
-        <td><label class="control-label">Imágen.</label></td>
-        <td><input class="input-group" type="file" name="user_image" accept="image/*" /></td>
-      </tr>
-      <tr>
-        <td colspan="2"><button type="submit" name="btnsave" class="btn btn-default"> <span class="glyphicon glyphicon-save"></span> &nbsp; Guardar Imagen </button></td>
-      </tr>
-    </table>
-  </form>
-  <div class="alert alert-info"> <strong>Tutorial Vinculo!</strong> <a href="https://baulcode.com">Ir al Tutorial</a>! </div>
-</div>
+    <div class="container">
+    <img src="../Imagenes/icono.jpg" alt="" style="  width: 10%;  float: right; "> <br> <br>
 
-<!-- Latest compiled and minified JavaScript --> 
-<script src="bootstrap/js/bootstrap.min.js"></script>
+        <h1>Registro de Mascotas</h1>
+        <?php
+            if(isset($errMSG) || isset($successMSG)){
+                echo '<script>';
+                if(isset($errMSG)) {
+                    echo 'alert("'.$errMSG.'");';
+                }
+                else if(isset($successMSG)) {
+                    echo 'alert("'.$successMSG.'");';
+                }
+                echo '</script>';
+            }
+        ?>
+        <div id="registro-mascotas-form">
+            <form method="post" enctype="multipart/form-data" class="form-horizontal">
+                <label>Tipo de Animal:</label>
+                <select name="Tipo" id="Tipo" onchange="mostrarRazas()">
+                    <option disabled selected>Seleccione Tipo De Animal</option>
+                    <option value="1">Perro</option>
+                    <option value="2">Gato</option>
+                </select>
+
+                <label>Nombre:</label>
+                <input type="text" id="Nombre" name="Nombre">
+
+                <label>Edad:</label>
+                <select name="Edad" id="Edad">
+                    <option disabled selected>Selecciona la edad del animal</option>
+                    <option value="Cachorro">Cachorro</option>
+                    <option value="Adulto">Adulto</option>
+                    <option value="Senior">Senior</option>
+                </select>
+
+                <label>Raza:</label>
+                <input type="text" id="Raza" name="Raza">
+                <div id="RazaSelect" style="display: none;"></div>
+
+                <label>Tamaño del Animal</label>
+                <select name="Tamaño" id="Tamaño">
+                    <option disabled selected>Seleccione el Tamaño Del Animal</option>
+                    <option value="Pequeño">Pequeño</option>
+                    <option value="Mediano">Mediano</option>
+                    <option value="Grande">Grande</option>
+                </select>
+
+                <label>Color</label>
+                <select name="Color" id="Color">
+                    <option disabled selected>Seleccione el color de la mascota</option>
+                    <option value="Negro">Negro</option>
+                    <option value="Blanco">Blanco</option>
+                    <option value="Cafe">Cafe</option>
+                </select>
+
+                <label>Sexo:</label>
+                <select id="Sexo" name="Sexo">
+                    <option disabled selected>Seleccione El Sexo del animal</option>
+                    <option value="Macho">Macho</option>
+                    <option value="Hembra">Hembra</option>
+                    <option value="Esterilizado">Esterilizado</option>
+                </select>
+
+                <input type="hidden" name="Estado" value="Sin Adoptar">
+
+                <label>Foto:</label>
+                <center>
+                    <input class="input-group" type="file" name="user_image" accept="image/*" />
+                </center>
+                <input type="submit" value="Registrar" name="btnsave" class="btn btn-default">
+                <a href="../Html/Inicio/Administrador.php" style="padding: 10px;
+                    background-color: gainsboro;
+                    color: black;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    margin-top: 10px;
+                    padding: 8px;
+                    margin-bottom: 10px;
+                    text-align: center;
+                    text-decoration: none;
+                    max-width: 100%;"> Volver </a>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

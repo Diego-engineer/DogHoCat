@@ -5,7 +5,7 @@ require_once 'Conexion.php';
 if(isset($_GET['edit_id']) && !empty($_GET['edit_id']))
 {
 	$id = $_GET['edit_id'];
-	$stmt_edit = $DB_con->prepare('SELECT Imagen_Marca, Imagen_Tipo, Imagen_Img FROM tbl_imagenes WHERE Imagen_ID =:uid');
+	$stmt_edit = $DB_con->prepare('SELECT Nombre, Edad, Raza, Tamaño, Color, Sexo, Imagen_Img FROM tbl_animales WHERE Id_Animal  =:uid');
 	$stmt_edit->execute(array(':uid'=>$id));
 	$edit_row = $stmt_edit->fetch(PDO::FETCH_ASSOC);
 	extract($edit_row);
@@ -17,8 +17,12 @@ else
 
 if(isset($_POST['btn_save_updates']))
 {
-	$username = $_POST['user_name'];// user name
-	$userjob = $_POST['user_job'];// user email
+	$Nombre = $_POST['Nombre']; // user name
+    $Edad = $_POST['Edad']; // user email
+    $Raza = $_POST['Raza'];
+    $Tamaño = $_POST['Tamaño'];
+    $Color = $_POST['Color'];
+    $Sexo = $_POST['Sexo'];
 		
 	$imgFile = $_FILES['user_image']['name'];
 	$tmp_dir = $_FILES['user_image']['tmp_name'];
@@ -57,15 +61,24 @@ if(isset($_POST['btn_save_updates']))
 	// if no error occured, continue ....
 	if(!isset($errMSG))
 	{
-		$stmt = $DB_con->prepare('UPDATE tbl_imagenes 
-									 SET Imagen_Marca=:uname, 
-										 Imagen_Tipo=:ujob, 
-										 Imagen_Img=:upic 
-								   WHERE Imagen_ID=:uid');
-		$stmt->bindParam(':uname',$username);
-		$stmt->bindParam(':ujob',$userjob);
-		$stmt->bindParam(':upic',$userpic);
-		$stmt->bindParam(':uid',$id);
+		$stmt = $DB_con->prepare('UPDATE tbl_animales
+                             SET Nombre=?, 
+                                 Edad=?, 
+                                 Raza=?, 
+                                 Tamaño=?,
+                                 Color=?,
+                                 Sexo=?,
+                                 Imagen_Img=?
+                           WHERE Id_Animal =?');	
+		$stmt->bindValue(1, $Nombre);
+		$stmt->bindValue(2, $Edad);
+		$stmt->bindValue(3, $Raza);
+		$stmt->bindValue(4, $Tamaño);
+		$stmt->bindValue(5, $Color);
+		$stmt->bindValue(6, $Sexo);
+		$stmt->bindValue(7, $userpic);
+		$stmt->bindValue(8, $Id_Animal );
+
 			
 		if($stmt->execute()){
 			?>
@@ -118,12 +131,28 @@ if(isset($_POST['btn_save_updates']))
 	?>
     <table class="table table-bordered table-responsive">
       <tr>
-        <td><label class="control-label">Marca.</label></td>
-        <td><input class="form-control" type="text" name="user_name" value="<?php echo $Imagen_Marca; ?>" required /></td>
+        <td><label class="control-label">Nombre</label></td>
+        <td><input class="form-control" type="text" name="Nombre" value="<?php echo $Nombre; ?>" required /></td>
       </tr>
       <tr>
-        <td><label class="control-label">Tipo.</label></td>
-        <td><input class="form-control" type="text" name="user_job" value="<?php echo $Imagen_Tipo; ?>" required /></td>
+        <td><label class="control-label">Edad</label></td>
+        <td><input class="form-control" type="text" name="Edad" value="<?php echo $Edad; ?>" required /></td>
+      </tr>
+	  <tr>
+        <td><label class="control-label">Raza</label></td>
+        <td><input class="form-control" type="text" name="Raza" value="<?php echo $Raza; ?>" required /></td>
+      </tr>
+      <tr>
+        <td><label class="control-label">Tamaño</label></td>
+        <td><input class="form-control" type="text" name="Tamaño" value="<?php echo $Tamaño; ?>" required /></td>
+      </tr>
+	  <tr>
+        <td><label class="control-label">Color</label></td>
+        <td><input class="form-control" type="text" name="Color" value="<?php echo $Color; ?>" required /></td>
+      </tr>
+      <tr>
+        <td><label class="control-label">Sexo</label></td>
+        <td><input class="form-control" type="text" name="Sexo" value="<?php echo $Sexo; ?>" required /></td>
       </tr>
       <tr>
         <td><label class="control-label">Imágen.</label></td>
@@ -136,7 +165,6 @@ if(isset($_POST['btn_save_updates']))
       </tr>
     </table>
   </form>
-  <div class="alert alert-success"> <strong>Tutorial Vinculo!</strong> <a href="https://baulcode.com">Ir al Tutorial</a>! </div>
-</div>
+  
 </body>
 </html>

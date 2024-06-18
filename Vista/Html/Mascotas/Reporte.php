@@ -32,7 +32,7 @@ class MYPDF extends TCPDF {
                 $row['Tamaño'],
                 $row['Color'],
                 $row['Sexo'],
-                $row['Foto'],
+                $row['Imagen_Img'],
             );
         }
 

@@ -21,7 +21,7 @@
         }
 
     }else{
-        echo("Llenar todos los campos");
+        echo '<script>alert("Para Continuar Llena Todos lo Campos."); window.location.href = "../Vista/Html/Donaciones/DineroUsuario.php";</script>';
     }
 
 ?>

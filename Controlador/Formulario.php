@@ -1,7 +1,7 @@
 <?php
 
     class formulario {
-
+        private $mascota;
         private $nombre;
         private $correo;
         private $telefono;
@@ -43,8 +43,9 @@
             $this ->encerrar="";
         }
 
-        public function Formulario($nombre, $correo, $telefono, $direccion, $mental, $motivo, $dinero, $experiencia, $antes, $casa, $patio, $niños, $deacuerdo, $enseñanza, $libertad, $condiciones, $quedara, $encerrar){
+        public function Formulario($mascota, $nombre, $correo, $telefono, $direccion, $mental, $motivo, $dinero, $experiencia, $antes, $casa, $patio, $niños, $deacuerdo, $enseñanza, $libertad, $condiciones, $quedara, $encerrar){
 
+            $this ->mascota=$mascota;
             $this->nombre=$nombre;
             $this->correo=$correo;
             $this->telefono=$telefono;
@@ -63,6 +64,10 @@
             $this->condiciones=$condiciones;
             $this->quedara=$quedara;
             $this->encerrar=$encerrar;
+        }
+
+        function getmascota(){
+            return $this->mascota;
         }
 
         function getnombre(){

@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $res = $conexion->obtenerFilasAfectadas();
 
     if ($res > 0) {
-        echo '<script>alert("Usuario Creado y registrado, pulsa aceptar para ir al Login."); window.location.href = "../Vista/Html/Inicio/Login.html";</script>';
+        echo '<script>alert("Su pedido se a cargado con efectividad."); window.location.href = "../Vista/Html/Inventario/Insumos.php";</script>';
     } else {
         echo "Error al enviar el formulario";
     }

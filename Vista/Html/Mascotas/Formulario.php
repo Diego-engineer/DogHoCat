@@ -14,6 +14,7 @@
 
     if (!isset($_SESSION["Rol"])) {
         header("location: ../Inicio/Login.html");
+        exit();
     }
 
     $documento = $_SESSION["documento"];
@@ -24,26 +25,48 @@
     $sql = "SELECT * FROM tbl_usuarios WHERE Documento = '$documento'";
     $conexion->consulta($sql);
     $usuario = $conexion->obtenerResult()->fetch_assoc();
+
+    $id_animal = isset($_GET['id_animal']) ? intval($_GET['id_animal']) : 0;
+
+    if ($id_animal === 0) {
+        die("No se ha especificado un animal para adoptar.");
+    }
+
+    $sql_animal = "SELECT Id_Animal, Nombre FROM tbl_animales WHERE Id_Animal = $id_animal";
+    $conexion->consulta($sql_animal);
+    $animal = $conexion->obtenerResult()->fetch_assoc();
+
+    if (!$animal) {
+        die("No se encontró el animal especificado.");
+    }
     ?>
 
 </head>
 <body>
     <div class="container">
+    <img src="../../Imagenes/icono.jpg" alt="" style="  width: 10%;  float: right; "> <br> 
+
         <h1>Formulario de Adopción</h1>
-        <br>
+        
         <div id="formulario-adopcion">
             <form action="../../../Controlador/ControlFormulario.php" method="POST">
+                <input type="hidden" id="id_animal" name="id_animal" value="<?php echo $animal['Id_Animal']; ?>">
+
+                <label>Animal a adoptar:</label>
+                <input type="text" value="<?php echo $animal['Nombre']; ?>" readonly>
+
                 <label>Nombre Completo:</label>
-                <input type="text" id="nombre" name="nombre" maxlength="80" value="<?php echo $usuario['Nombres'].' '.$usuario['Apellidos']; ?>" required>
+                <input type="text" id="nombre" name="nombre" maxlength="80" value="<?php echo $usuario['Nombres'].' '.$usuario['Apellidos']; ?>" readonly>
 
                 <label>Correo Electronico:</label>
-                <input type="text" id="correo" name="correo" maxlength="80" value="<?php echo $usuario['Correo']; ?>" required>
+                <input type="text" id="correo" name="correo" maxlength="80" value="<?php echo $usuario['Correo']; ?>" readonly>
 
                 <label>Numero Telefonico:</label>
-                <input type="text" id="telefono" name="telefono" maxlength="80" value="<?php echo $usuario['Telefono']; ?>" required>
+                <input type="text" id="telefono" name="telefono" maxlength="80" value="<?php echo $usuario['Telefono']; ?>" readonly>
 
                 <label>Direccion:</label>
-                <input type="text" id="direccion" name="direccion" maxlength="80" value="<?php echo $usuario['Direccion']; ?>" required>
+                <input type="text" id="direccion" name="direccion" maxlength="80" value="<?php echo $usuario['Direccion']; ?>" readonly>
+
                 <label>Cual es su estado Mental actualmente?:</label>
                 <select id="mental" name="mental">
                     <option disabled selected>Seleccione como ha estado mentalmete</option>
@@ -92,6 +115,7 @@
                 <label>Si cuenta con niños en el hogar cuantos años tienen?</label>
                 <select id="niños" name="niños">
                     <option disabled selected>Seleccione alguna de las edades</option>
+                    <option value="Mas de 18 años">No cuento con niños</option>
                     <option value="Mas de 18 años">Mas de 18 años</option>
                     <option value="Entre los 12-17 años">Entre los 12-17 años</option>
                     <option value="Entre los 2-5 años">Entre los 2-5 años</option>
@@ -144,9 +168,8 @@
                     <option value="Obviamnete no">Obviamnete no</option>
                 </select>
 
-
-                <input type="submit" value="ENVIAR"></button>
-                <button><a href="../Inicio/Usuario.php" style="padding: 10px;
+                <input type="submit" value="Enviar Solicitud">
+                <a href="../Mascotas/MascoUsuario.php" style="padding: 10px;
                     background-color: gainsboro;
                     color: black;
                     border: none;
@@ -155,7 +178,9 @@
                     margin-top: 10px;
                     padding: 8px;
                     margin-bottom: 10px;
-                    max-width: 100%;"> Volver </a> </button>
+                    text-align: center;
+                    text-decoration: none;
+                    max-width: 100%;"> Volver </a>
             </form>
         </div>
     </div>

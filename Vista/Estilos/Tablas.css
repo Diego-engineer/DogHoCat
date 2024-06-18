@@ -1,8 +1,13 @@
 /* Estilos para la tabla */
-
+body {
+    font-family: Arial, sans-serif;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_k0VijHPR-DzuPKZpScR6W2S7HJ84YqvNrA&usqp=CAU);
+    }
 table {
     width: 100%;
     border-collapse: collapse;
+    background-color: skyblue;
+    color: black;
 }
 
 table, th, td {

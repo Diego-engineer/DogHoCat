@@ -18,9 +18,9 @@
         } catch (Exception $ex) {
             echo 'Erros'.$ex;
         }
-        echo("Proveedor registrado con  exito");
+        echo '<script>alert("Proveedor registrado con exito :)."); window.location.href = "../Vista/Html/Inventario/RegistroProveedor.html";</script>';
         
     } else {
-        echo ("Llenar todos los campos");
+        echo '<script>alert("Para Continuar Llena Todos lo Campos."); window.location.href = "../Vista/Html/Inventario/RegistroProveedor.html";</script>';
     }
 ?>

@@ -18,6 +18,6 @@
             echo 'Erros'.$ex;
         }
     }else{
-        echo("Llenar todos los campos");
+        echo '<script>alert("Para Continuar Llena Todos lo Campos."); window.location.href = "../Vista/Html/Donaciones/InsumosUsuario.php";</script>';
     }
 ?>

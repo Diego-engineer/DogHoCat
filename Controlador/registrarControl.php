@@ -5,9 +5,9 @@ class RegistrarControles {
 
     public function regControl (Control $regControl) {
         try {
+
             $conexion = new conexionBD();
             $conexion ->abrir();
-
             $Fecha = $regControl -> getFecha();
             $Veterinario = $regControl -> getVeterinario();
             $Paciente = $regControl -> getPaciente();
@@ -30,7 +30,7 @@ class RegistrarControles {
             $res = $conexion ->obtenerFilasAfectadas();
 
             if ($res > 0) {
-                echo '<script>alert("Control Creado y registrado, pulsa aceptar para ir al Inicio.");</script>';
+                echo '<script>alert("Control Creado y registrado, pulsa aceptar para ir al Inicio."); window.location.href = "../Vista/Html/Mascotas/control.php";</script>';
             } else {
                 echo "Error al registrar el Control";
             }

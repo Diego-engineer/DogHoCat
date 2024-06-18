@@ -2,10 +2,11 @@
 require_once "Formulario.php";
 require_once "registrarFormulario.php";
 
-if (!empty($_POST["nombre"]) && !empty($_POST["correo"]) && !empty($_POST["telefono"]) && !empty($_POST["direccion"]) && !empty($_POST["mental"]) && !empty($_POST["motivo"]) && !empty($_POST  ["dinero"]) && !empty($_POST["experiencia"]) && !empty($_POST["antes"]) && !empty($_POST["casa"]) && !empty($_POST["patio"]) && !empty($_POST["niños"]) && !empty($_POST["deacuerdo"]) && !empty($_POST["enseñanza"]) && !empty($_POST["libertad"]) && !empty($_POST["condiciones"]) && !empty($_POST["quedara"]) && !empty($_POST["encerrar"])){
+if (!empty($_POST["id_animal"]) && !empty($_POST["nombre"]) && !empty($_POST["correo"]) && !empty($_POST["telefono"]) && !empty($_POST["direccion"]) && !empty($_POST["mental"]) && !empty($_POST["motivo"]) && !empty($_POST  ["dinero"]) && !empty($_POST["experiencia"]) && !empty($_POST["antes"]) && !empty($_POST["casa"]) && !empty($_POST["patio"]) && !empty($_POST["niños"]) && !empty($_POST["deacuerdo"]) && !empty($_POST["enseñanza"]) && !empty($_POST["libertad"]) && !empty($_POST["condiciones"]) && !empty($_POST["quedara"]) && !empty($_POST["encerrar"])){
 
     try {
-        
+
+        $mascota = $_POST["id_animal"];
         $nombre = $_POST["nombre"];
         $correo = $_POST["correo"];
         $telefono = $_POST["telefono"];
@@ -26,7 +27,7 @@ if (!empty($_POST["nombre"]) && !empty($_POST["correo"]) && !empty($_POST["telef
         $encerrar = $_POST["encerrar"];
 
         $formulario = new formulario;
-        $formulario->Formulario($nombre, $correo, $telefono, $direccion, $mental, $motivo, $dinero, $experiencia, $antes, $casa, $patio, $niños, $deacuerdo, $enseñanza, $libertad, $condiciones, $quedara, $encerrar);
+        $formulario->Formulario($mascota, $nombre, $correo, $telefono, $direccion, $mental, $motivo, $dinero, $experiencia, $antes, $casa, $patio, $niños, $deacuerdo, $enseñanza, $libertad, $condiciones, $quedara, $encerrar);
         $regFormulario = new registrarFormulario();
         $regFormulario->regFormulario($formulario);
 

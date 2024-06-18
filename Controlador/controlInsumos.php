@@ -16,9 +16,11 @@
             $in ->Insumos($Categoria,$Insumo,$Proveedor,$Codigo,$Precio);
             $regInsumos = new registrarInsumos();
             $regInsumos ->regInsumos($in);
+         
         } catch (Exception $ex) {
             echo 'Erros'.$ex;
         }
+
         
     } else {
         echo ("Llenar todos los campos");

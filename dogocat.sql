@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-05-2024 a las 08:01:08
+-- Tiempo de generación: 14-06-2024 a las 06:14:04
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -36,16 +36,17 @@ CREATE TABLE `tbl_animales` (
   `Tamaño` varchar(20) NOT NULL,
   `Color` varchar(20) NOT NULL,
   `Sexo` char(1) NOT NULL,
-  `Foto` blob DEFAULT NULL
+  `Estado` varchar(20) NOT NULL,
+  `Imagen_Img` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_animales`
 --
 
-INSERT INTO `tbl_animales` (`Id_Animal`, `Tipo_Animal`, `Nombre`, `Edad`, `Raza`, `Tamaño`, `Color`, `Sexo`, `Foto`) VALUES
-(37, 1, 'Spike', 'Adulto', 'Labrador', 'Grande', 'Cafe', 'm', 0x696d675f6d6173636f74612e706e67),
-(38, 1, 'pepe', 'Cachorro', 'Bulldog', 'Pequeño', 'Blanco', 'm', 0x696d675f6d6173636f74612e706e67);
+INSERT INTO `tbl_animales` (`Id_Animal`, `Tipo_Animal`, `Nombre`, `Edad`, `Raza`, `Tamaño`, `Color`, `Sexo`, `Estado`, `Imagen_Img`) VALUES
+(5, 1, 'Spike', 'Cachorro', 'Bulldog', 'Pequeño', 'Negro', 'M', 'Sin Adoptar', '540109.jpg'),
+(6, 2, 'lulu', 'Cachorro', 'Persa', 'Pequeño', 'Negro', 'H', 'Sin Adoptar', '997247.jpeg');
 
 -- --------------------------------------------------------
 
@@ -123,13 +124,14 @@ INSERT INTO `tbl_dinero` (`id_dinero`, `Documento`, `Tipo_Donacion`, `Valor`, `L
 
 CREATE TABLE `tbl_formulario` (
   `id_formulario` int(11) NOT NULL,
+  `id_animal` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `correo` varchar(50) NOT NULL,
   `telefono` int(11) NOT NULL,
   `direccion` varchar(50) NOT NULL,
   `mental` varchar(200) NOT NULL,
   `motivo` varchar(200) NOT NULL,
-  `dinero` int(11) NOT NULL,
+  `dinero` varchar(50) NOT NULL,
   `experiencia` text NOT NULL,
   `antes` varchar(200) NOT NULL,
   `casa` varchar(200) NOT NULL,
@@ -142,14 +144,6 @@ CREATE TABLE `tbl_formulario` (
   `quedara` varchar(200) NOT NULL,
   `encerrar` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `tbl_formulario`
---
-
-INSERT INTO `tbl_formulario` (`id_formulario`, `nombre`, `correo`, `telefono`, `direccion`, `mental`, `motivo`, `dinero`, `experiencia`, `antes`, `casa`, `patio`, `niños`, `deacuerdo`, `enseñanza`, `libertad`, `condiciones`, `quedara`, `encerrar`) VALUES
-(1, 'trtrtrtwer', 'dhdfhgfgh', 5464564, 'dgfgdfgs', 'Normal', 'dgdfghdfhfhdfg', 0, 'gfdgdt', '', 'Casa propia', 'NO', 'Entre los 12-17 años', 'SI', 'grhgfgjytj', 'SI', 'En el patio', 'Con un familiar', 'Solo cuado nos vayamos de viaje'),
-(2, 'trtrtrtwer', 'dhdfhgfgh', 5464564, 'dgfgdfgs', 'Normal', 'dgdfghdfhfhdfg', 0, 'gfdgdt', '', 'Casa propia', 'NO', 'Entre los 12-17 años', 'SI', 'grhgfgjytj', 'SI', 'En el patio', 'Con un familiar', 'Solo cuado nos vayamos de viaje');
 
 -- --------------------------------------------------------
 
@@ -181,22 +175,23 @@ INSERT INTO `tbl_insumos` (`id_insumo`, `Documento`, `Insumo`, `Descripcion`, `L
 --
 
 CREATE TABLE `tbl_pedidos` (
+  `id` int(11) NOT NULL,
   `Codigo_Insumo` int(11) NOT NULL,
   `Cantidad` int(200) NOT NULL,
-  `Observaciones` varchar(300) NOT NULL
+  `Observaciones` varchar(300) NOT NULL,
+  `Fecha` date NOT NULL,
+  `Total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_pedidos`
 --
 
-INSERT INTO `tbl_pedidos` (`Codigo_Insumo`, `Cantidad`, `Observaciones`) VALUES
-(1231232, 12, 'que sean de carne.'),
-(453465, 123, '100 de carne y 23 de pollo.'),
-(1231232, 100, '50 de carne y 50 de pollo.'),
-(54564523, 10, 'shampoo para cachorro gaticos'),
-(453465, 100, '50 cobijas para perro y 50 para gaticos'),
-(1231232, 5, '5 bultos de comida de pollo para perros mayores de eedad');
+INSERT INTO `tbl_pedidos` (`id`, `Codigo_Insumo`, `Cantidad`, `Observaciones`, `Fecha`, `Total`) VALUES
+(3, 1231232, 20, 'de pollo', '2024-06-07', 2160000),
+(4, 54564523, 12, 'para gatos y perros cachorros', '2024-06-06', 840000),
+(5, 1231232, 20, 'de pollo', '2024-06-11', 2160000),
+(6, 1231232, 20, 'de pollo', '2024-06-12', 2160000);
 
 -- --------------------------------------------------------
 
@@ -216,7 +211,8 @@ CREATE TABLE `tbl_proveedores` (
 --
 
 INSERT INTO `tbl_proveedores` (`Nit`, `Nombre`, `Direccion`, `Telefono`) VALUES
-(12331234, 'CANINAS FC', 'Caracas -19 #45', 3114837115);
+(12331234, 'CANINAS CF', 'Caracas -19 #45', 3114837115),
+(23424243, 'CANINOS FC', 'Caracas -87 #76', 3112546789);
 
 -- --------------------------------------------------------
 
@@ -305,15 +301,14 @@ CREATE TABLE `tbl_usuarios` (
 --
 
 INSERT INTO `tbl_usuarios` (`Id_usuario`, `Documento`, `Nombres`, `Apellidos`, `Ciudad`, `Direccion`, `Correo`, `Telefono`, `Rol`, `Contraseña`) VALUES
-(34, 3224324, 'Diego', 'Alarcon', 'Bogota D.C.', 'calle 34', 'diego@gmail.com', 23432432, 1, '4321'),
+(34, 3224324, 'Diego', 'Alarcón', 'Bogota D.C.', 'calle 34', 'diego@gmail.com', 23432432, 1, '4321'),
 (35, 1022, 'Carlos', 'Rico', 'Bogota D.C.', 'calle94', 'carlos@rico', 12445678, 2, '12345'),
 (48, 10522, 'Diego', 'Alarcon', 'Bogota D.C.', 'calle #24', 'diego@gmail.com', 23424243, 2, '1234'),
 (49, 23423, 'Luisa', 'Perez', 'Bogota D.C.', 'calle 45', 'Luis@gmail.com', 23243435, 3, '54321'),
 (50, 1022, 'Luis', 'Perez', 'Bogota D.C.', 'calle #97', 'Luis@gmail.com', 23424545, 1, '54321'),
 (51, 1012330493, 'Luisa', 'Gonzales', 'Bogota D.C.', 'calle #56', 'diego1@gmail.com', 23243435, 1, '1234'),
 (52, 1231421, 'Lucia', 'Hernandez', 'Bogota D.C.', 'calle #75', 'lucia@gmail.com', 324324352, 2, '1234'),
-(53, 1323, 'juanita', 'osorio', 'Bogota D.C.', 'calle 34', 'osorio@gmail.com', 12321322121, 2, '12345'),
-(60, 1434, 'Luis', 'diaz', 'Bogota D.C.', 'calle #97', 'diaz@gmail.com', 3228974517, 1, '12345');
+(53, 1323, 'juanita', 'osorio', 'Bogota D.C.', 'calle 34', 'osorio@gmail.com', 12321322121, 2, '12345');
 
 --
 -- Índices para tablas volcadas
@@ -349,7 +344,8 @@ ALTER TABLE `tbl_dinero`
 -- Indices de la tabla `tbl_formulario`
 --
 ALTER TABLE `tbl_formulario`
-  ADD PRIMARY KEY (`id_formulario`);
+  ADD PRIMARY KEY (`id_formulario`),
+  ADD KEY `animal` (`id_animal`);
 
 --
 -- Indices de la tabla `tbl_insumos`
@@ -361,6 +357,7 @@ ALTER TABLE `tbl_insumos`
 -- Indices de la tabla `tbl_pedidos`
 --
 ALTER TABLE `tbl_pedidos`
+  ADD PRIMARY KEY (`id`),
   ADD KEY `codigo` (`Codigo_Insumo`);
 
 --
@@ -403,7 +400,7 @@ ALTER TABLE `tbl_usuarios`
 -- AUTO_INCREMENT de la tabla `tbl_animales`
 --
 ALTER TABLE `tbl_animales`
-  MODIFY `Id_Animal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `Id_Animal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_dinero`
@@ -415,13 +412,19 @@ ALTER TABLE `tbl_dinero`
 -- AUTO_INCREMENT de la tabla `tbl_formulario`
 --
 ALTER TABLE `tbl_formulario`
-  MODIFY `id_formulario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_formulario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_insumos`
 --
 ALTER TABLE `tbl_insumos`
   MODIFY `id_insumo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de la tabla `tbl_pedidos`
+--
+ALTER TABLE `tbl_pedidos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_usuarios`
@@ -445,6 +448,12 @@ ALTER TABLE `tbl_animales`
 ALTER TABLE `tbl_controles`
   ADD CONSTRAINT `tbl_controles_ibfk_1` FOREIGN KEY (`Id_veterinario`) REFERENCES `tbl_usuarios` (`Id_usuario`),
   ADD CONSTRAINT `tbl_controles_ibfk_2` FOREIGN KEY (`Paciente`) REFERENCES `tbl_animales` (`Id_Animal`);
+
+--
+-- Filtros para la tabla `tbl_formulario`
+--
+ALTER TABLE `tbl_formulario`
+  ADD CONSTRAINT `animal` FOREIGN KEY (`id_animal`) REFERENCES `tbl_animales` (`Id_Animal`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `tbl_pedidos`

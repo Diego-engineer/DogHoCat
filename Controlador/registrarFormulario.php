@@ -8,6 +8,7 @@
                 $conexion = new ConexionBD();
                 $conexion->abrir();
 
+                $mascota = $regFormulario->getmascota();
                 $nombre =$regFormulario->getnombre();
                 $correo =$regFormulario->getcorreo();
                 $telefono =$regFormulario->gettelefono();
@@ -27,13 +28,13 @@
                 $quedara =$regFormulario->getquedara();
                 $encerrar =$regFormulario->getencerrar();
 
-                $sql = "INSERT INTO tbl_formulario VALUES( '','$nombre', '$correo', '$telefono', '$direccion', '$mental', '$motivo', '$dinero', '$experiencia', '$antes', '$casa', '$patio', '$niños', '$deacuerdo', '$enseñanza', '$libertad', '$condiciones', '$quedara', '$encerrar')";
+                $sql = "INSERT INTO tbl_formulario VALUES( '','$mascota','$nombre', '$correo', '$telefono', '$direccion', '$mental', '$motivo', '$dinero', '$experiencia', '$antes', '$casa', '$patio', '$niños', '$deacuerdo', '$enseñanza', '$libertad', '$condiciones', '$quedara', '$encerrar')";
 
                 $conexion->consulta($sql);
                 $res = $conexion->obtenerFilasAfectadas();
 
                 if ($res > 0) {
-                    echo '<script>alert("Tu Solicitud Esta En Proceso, Tendras Pronta Respuesta En Tu Correo.  Gracias Por Elejirnos !!."); window.location.href = "../Vista/Html/Mascotas/MascoUsuario.php";</script>';
+                    echo '<script>alert("Tu Solicitud Esta En Proceso, un asesor se pondra en contacto contigo. Gracias Por Elejirnos !!."); window.location.href = "../Vista/Html/Mascotas/MascoUsuario.php";</script>';
                 } else {
                     echo "Error al enviar el formulario";
                 }

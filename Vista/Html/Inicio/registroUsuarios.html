@@ -10,46 +10,46 @@
 </head>
 <body>
     <div class="container">
-        <img src="/ProyectoPHP/Vista/Imagenes/icono.jpg" alt="" style="  width: 10%;  float: right; "> <br> <br>
+        <img src="../../Imagenes/icono.jpg" alt="" style="  width: 10%;  float: right; "> <br> <br>
         <h1>Registro </h1>
         
         
         <form action="../../../Controlador/Control.php" method="POST">
             <option>Documento: </option>
-            <input type="text" id="Documento" name="Documento"><br><br>
+            <input type="text" id="Documento" name="Documento"><br>
 
                 <label>Nombres:</label>
-                <input type="text" id="Nombres" name="Nombres">
+                <input type="text" id="Nombres" name="Nombres"><br>
 
                 <label>Apellidos:</label>
-                <input type="text" id="Apellidos" name="Apellidos">
+                <input type="text" id="Apellidos" name="Apellidos"><br>
 
                 <option>Ciudad :  </option>
                 <select name="Ciudad">
                     <Option value="Bogota D.C.">Bogota D.C.</Option>
-                </select> <Br></Br>
+                </select> <br>
 
                 <option>Dirección:  </option>
-                <input type="text" id="Direc" name="Direc"><br><br>
+                <input type="text" id="Direc" name="Direc"><br>
 
                 <option>Correo : </option>
-                <input type="email" id="Correo" name="Correo"><br><br>
+                <input type="email" id="Correo" name="Correo"><br>
 
                 <option>Teléfono : </option>
-                <input type="text" id="Telefono" name="Telefono"><br><br>
+                <input type="text" id="Telefono" name="Telefono"><br>
                 <option>Rol : </option>
                 <select name="Rol">
                     <option value="1">Usuario</option>
                     <option value="2">Administrador</option>
                     <option value="3">Veterinario</option>
-                </select> <br><br>
+                </select> <br>
 
                 <option>Contraseña : </option>
-                <input type="text" id="Contra" name="Contra"><br><br>
-                <br><br>
+                <input type="text" id="Contra" name="Contra"><br>
+                
                 <input type="submit" value="Registrar">
 
-                <button><a href="../Inicio/Administrador.PHP" style="padding: 10px;
+                <a href="../Inicio/Administrador.PHP" style="padding: 10px;
                     background-color: gainsboro;
                     color: black;
                     border: none;
@@ -58,7 +58,9 @@
                     margin-top: 10px;
                     padding: 8px;
                     margin-bottom: 10px;
-                    max-width: 100%;"> Volver </a> </button>
+                    text-align: center;
+                    text-decoration: none;
+                    max-width: 100%;"> Volver </a>
             </form>
         </form>
     </div>

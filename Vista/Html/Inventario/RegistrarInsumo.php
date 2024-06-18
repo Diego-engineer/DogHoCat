@@ -32,6 +32,8 @@ if ($conexion->abrir()) {
 <body>
 
 <div class="container">
+<img src="../../Imagenes/icono.jpg" alt="" style="  width: 10%;  float: right; "> <br> <br>
+
     <h1>Registro de insumos</h1>
 
     <form action="../../../Controlador/controlInsumos.php" method="POST">
@@ -72,9 +74,18 @@ if ($conexion->abrir()) {
         <div>
             <input type="submit" value="Registrar">
         </div>
-        <button>
-            <a href="../Inicio/Administrador.php" style="padding: 10px; background-color: gainsboro; color: black; border: none; border-radius: 4px; cursor: pointer; margin-top: 10px; padding: 8px; margin-bottom: 10px; max-width: 100%;"> Volver </a>
-        </button>
+        <a href="../Inicio/Administrador.php" style="padding: 10px;
+                    background-color: gainsboro;
+                    color: black;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    margin-top: 10px;
+                    padding: 8px;
+                    margin-bottom: 10px;
+                    text-align: center;
+                    text-decoration: none;
+                    max-width: 100%;"> Volver </a>
     </form>
 </div>
 </body>

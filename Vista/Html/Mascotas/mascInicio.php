@@ -45,8 +45,8 @@ $result = $conexion->obtenerResult();
             ?>
             <div class="swiper-slide">
                 <div class="icons">
-                    <i class="fa-solid fa-circle-arrow-left"> <a href="/Vista/Html/Inicio/inicio.html">..</a></i>
-                    <img src="/Vista/Imagenes/icono.jpg" alt="">
+                    <i class="fa-solid fa-circle-arrow-left"> <a href="../../../Index.html">..</a></i>
+                    <img src="../../Imagenes/icono.jpg" alt="">
                     <i class="fa-regular fa-heart"></i>
                 </div>
 
@@ -58,20 +58,12 @@ $result = $conexion->obtenerResult();
                         <h2> TAMAÑO: <br><?php echo $fila['Tamaño']; ?></h2>
                         <h2> COLOR: <br><?php echo $fila['Color']; ?></h2>
                         <h2> SEXO: <br><?php echo $fila['Sexo']; ?></h2>
-                        <center> <a href="/Vista/Html/Inicio/registrarUsuarios.html" style="display: inline-block; padding: 13px 55px; border: 1px solid skyblue; border-radius: 25px; color: skyblue; text-decoration: none;"> Adoptar </a>  </center>
+                        <center> <a href="../Inicio/registrarUsuarios.html" style="display: inline-block; padding: 13px 55px; border: 1px solid skyblue; border-radius: 25px; color: skyblue; text-decoration: none;"> Adoptar </a>  </center>
                     </div>
 
                     <div class="mascota-img">
-                        <?php
-                        if (isset($fila['Foto'])) {
-                            $imagenCodificada = base64_encode($fila['Foto']);
-                            ?>
-                            <img src="data:image/jpeg;base64,<?php echo $imagenCodificada; ?>" alt="Imagen de la mascota">
-                            <?php
-                        } else {
-                            echo "Error: No se encontró la imagen de la mascota.";
-                        }
-                        ?>
+                        
+                        <img src="../../ImagenAnimal/imagenes/<?php echo $fila['Imagen_Img']; ?>" class="img-rounded" width="250px" height="250px" />
                     </div>
                 </div>
             </div>

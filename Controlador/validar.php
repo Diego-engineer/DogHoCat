@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     exit;
                 }
             } else {
-                echo "Usuario o contraseña incorrectos";
+                echo '<script>alert("Usuario y Contraseña Incorrectos, Por Favor Verifica Tus Datos."); window.location.href = "../Vista/Html/Inicio/Login.html";</script>';
             }
         } else {
             echo "Error en la conexión a la base de datos";

@@ -27,26 +27,20 @@ if (!isset($_SESSION["Rol"])) {
     <section>
         <nav id="navega">
             <ul class="menu"> 
-                    <li><a href="../../Html/Inicio/registroUsuarios.html">  Registrar Usuario</a></li> 
-                    <li><a href="../Inicio/Usuarios.php">Ver Usuarios</a></li>
-                    <li><a href="../../Html/Mascotas/registroMascotas.html">Registrar Animal</a></li>
-                    <li> <a href="../Inventario/RegistrarInsumo.php">Registrar Insumo</a></li>
-                    <li> <a href="../Inventario/Insumos.php">Pedir Insumo</a></li>
-                    <li> <a href="../Inventario/Insumos.php">Realizar pedidos</a></li>
-                    <li> <a href="../Inventario/pedidosR.php">Pedidos realizados</a></li>
-                    <li> <a href="../Inventario/RegistroProveedor.html">Registrar Proveedor</a></li>
-                    <li> <a href="../Inventario/Proveedores.php">Ver Proveedores</a></li>
-                    <li><a href="../../Html/Mascotas/tablamasc.php">Ver Animales</a></li>
-                    <li><a href="../../Html/Donaciones/donacionInsumos.php">Ver Donaciones de Insumos</a></li>
-                    <li><a href="../../Html/Donaciones/donacionDinero.php">Ver Donaciones de Dinero</a></li>
-                    
-                        
-
-                    
+                <li><a href="../../Html/Inicio/registroUsuarios.html">  Registrar Usuario</a></li> 
+                <li><a href="../Inicio/Usuarios.php">Ver Usuarios</a></li>
+                <li><a href="../../ImagenAnimal/AgregarNuevo.php">Registrar Animal</a></li>
+                <li><a href="../../Html/Mascotas/tablamasc.php">Ver Animales</a></li>
+                <li> <a href="../../Html/Mascotas/VerAdopciones.php">Solicitudes de adopcion</a></li>
+                <li> <a href="../Inventario/RegistrarInsumo.php">Registrar Insumo</a></li>
+                <li> <a href="../Inventario/Insumos.php">Realizar pedidos</a></li>
+                <li> <a href="../Inventario/pedidosR.php">Pedidos realizados</a></li>
+                <li> <a href="../Inventario/RegistroProveedor.html">Registrar Proveedor</a></li>
+                <li> <a href="../Inventario/Proveedores.php">Ver Proveedores</a></li>
+                <li><a href="../../Html/Donaciones/donacionInsumos.php">Ver Donaciones de Insumos</a></li>
+                <li><a href="../../Html/Donaciones/donacionDinero.php">Ver Donaciones de Dinero</a></li>
             </ul>
-
-       </nav>
-       
+        </nav>
     </section> <br>
     <center> <img src="https://t2.ea.ltmcdn.com/es/posts/8/1/2/adoptar_mascotas_por_internet_1218_orig.jpg" style="height: 650px;" alt=""> </center>
    

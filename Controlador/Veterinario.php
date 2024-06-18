@@ -56,7 +56,7 @@
 
         public function Control($Fecha, $Veterinario, $Paciente, $Tipo, $Raza, $Edad, $Sexo, $Historial, $Condicion, $Tratamiento, $Comentario, $Corporal, $Muscular, $Peso, $Mantener) {
 
-            $this -> Fecha =$Fecha;
+            $this -> Fecha = $Fecha;
             $this -> Veterinario = $Veterinario;
             $this -> Paciente = $Paciente;
             $this -> Tipo = $Tipo;

@@ -1,13 +1,11 @@
 <?php
     include '../../../Modelo/conexionBD.php';
 
-    
+    $conexion = new conexionBD();
+    $conexion->abrir();
 
     if (isset($_GET['eliminar'])) {
         $idEliminar = $_GET['eliminar'];
-        $conexion = new conexionBD();
-        $conexion->abrir();
-
         $sql = "DELETE FROM tbl_usuarios WHERE Id_usuario = $idEliminar";
         $conexion->consulta($sql);
 
@@ -30,6 +28,12 @@
     <link rel="stylesheet" href="../../Estilos/Tablas.css">
 </head>
 <body>
+    <br>
+<form action="../../../Controlador/buscarUsuario.php" method="POST">
+            <input type="text" id="buscarId" name="buscarId">
+            <input type="submit" value="Buscar">
+        </form>
+        <br><br>
 
     <table border="1">
         <tr>
@@ -66,9 +70,6 @@
     <center><a href="Reportes.php" style="display: inline-block; padding: 13px 55px; border: 1px solid black; border-radius: 25px; color: black; text-decoration: none;"> Generar Reporte </a></center> <br>
     <center><a href="Administrador.php" style="display: inline-block; padding: 13px 55px; border: 1px solid black; border-radius: 25px; color: black; text-decoration: none;"> Atras </a></center>
 
-        <form action="../../../Controlador/buscarUsuario.php" method="POST">
-            <input type="text" id="buscarId" name="buscarId">
-            <input type="submit" value="Buscar">
-        </form>
+        
 </body>
 </html>
